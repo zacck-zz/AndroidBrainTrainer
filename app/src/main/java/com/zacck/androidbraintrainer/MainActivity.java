@@ -58,9 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    //use this method to create a new game session
     public void playAgain(View view)
     {
 
+        //set up screen elements for new session
         score = 0;
         numberOfQuestions = 0;
         mTimerTextView.setText("30s");
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         generateQuestion();
 
+        //start a fairly odd timer for the countdown
         new CountDownTimer(30100, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -90,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void chooseAnswer(View view)
     {
+        //this method is called everytime  a button is tapped
+        //this method collates score and generates the next question
         if(view.getTag().toString().equals(Integer.toString(locationOfCorrectAnswer)))
         {
             score++;
@@ -106,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    //do all necessar work for the new question
     public void generateQuestion()
     {
         //logic
@@ -153,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void start(View view)
     {
+        //handle the start of the game
         bStart.setVisibility(View.INVISIBLE);
         mGameLayout.setVisibility(View.VISIBLE);
         playAgain(btPlayAgain);
